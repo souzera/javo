@@ -1,5 +1,7 @@
 'use client'
 
+import ChamadoContainer from "@/components/Chamados/ChamadoContainer";
+import { sample } from "@/types/chamado";
 import { useState } from "react";
 
 const DashboardPage: React.FC = () => {
@@ -18,7 +20,6 @@ const DashboardPage: React.FC = () => {
                             Equipes
                             <div>
                                 <ol className="flex flex-col gap-1">
-                                    <li className="bg-green-400">time zé da faca</li>
                                     <li className="bg-green-400">time zé da fava</li>
                                     <li className="bg-green-400">time zé da farra</li>
                                     <li className="bg-green-400">time zé da farda</li>
@@ -28,14 +29,14 @@ const DashboardPage: React.FC = () => {
                         </div>
                     </aside>
                     <main className="w-[70%]">
-                        <div className="bg-green-500 h-full p-8">
+                        <div className="bg-zinc-950 h-full p-8">
                             tarefas
-                            <div className="flex flex-col gap-2">
-                                <div className="bg-green-400">tarefa 1</div>
-                                <div className="bg-green-400">tarefa 2</div>
-                                <div className="bg-green-400">tarefa 3</div>
-                                <div className="bg-green-400">tarefa 4</div>
-                                <div className="bg-green-400">tarefa 5</div>
+                            <div className="grid grid-cols-4 gap-2">
+                                {sample.map((chamado) => {
+                                    return (
+                                        <ChamadoContainer chamado={chamado} />
+                                    )
+                                })}
                             </div>
                         </div>
                     </main>
