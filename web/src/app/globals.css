@@ -2,3 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #0a0a0a; /* Cor do polegar da barra de rolagem */
+    border-radius: 5px; /* Borda arredondada do polegar da barra de rolagem */
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #0a0a0a; /* Cor da pista da barra de rolagem */
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #000 #0a0a0a;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #0b0b0b;
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: #0a0a0a;
+  }
