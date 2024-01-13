@@ -1,7 +1,8 @@
 'use client'
 
-import ChamadoContainer from "@/components/Chamados/ChamadoContainer";
-import { sample } from "@/types/chamado";
+import { DragableListChamado } from "@/components/Chamados/DragableListChamado";
+import EquipeSelectButton from "@/components/Equipes/EquipeSelectButton";
+import { sample } from "@/types/equipe";
 import { useState } from "react";
 
 const DashboardPage: React.FC = () => {
@@ -12,37 +13,29 @@ const DashboardPage: React.FC = () => {
 
     return (
         <>
-            <body className="flex flex-col">
-                <section className="flex min-h-[90vh]">
-                    <aside className="w-[30%]">
-                        <div className="container flex flex-col bg-zinc-950 h-full p-8">
+            <body className="flex flex-col overflow-hidden">
+                <section className="flex min-h-[90vh] overflow-hidden">
+                    <aside className="w-[30%] bg-zinc-950">
+                        <div className="container flex flex-col  h-full p-8 overflow-y-auto">
                             <span>*LOGO*</span>
                             Equipes
                             <div>
-                                <ol className="flex flex-col gap-1">
-                                    <li className="bg-green-400">time zé da fava</li>
-                                    <li className="bg-green-400">time zé da farra</li>
-                                    <li className="bg-green-400">time zé da farda</li>
-                                    <li className="bg-green-400">time zé da fada</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </aside>
-                    <main className="w-[70%]">
-                        <div className="bg-zinc-950 h-full p-8">
-                            tarefas
-                            <div className="grid grid-cols-4 gap-2">
-                                {sample.map((chamado) => {
-                                    return (
-                                        <ChamadoContainer chamado={chamado} />
+                                {sample.map((equipe) => {
+                                    return(
+                                        <EquipeSelectButton id={equipe.id} nome={equipe.nome} />
                                     )
                                 })}
                             </div>
                         </div>
+                    </aside>
+                    <main className="w-[70%] bg-zinc-900 overflow-auto">
+                        <div className="h-full p-8">
+                            <DragableListChamado/>
+                        </div>
                     </main>
                 </section>
 
-                <section className="bg-zinc-900 flex flex-1 justify-center items-center">
+                <section className="bg-zinc-800 flex flex-1 justify-center items-center">
                     <footer className="flex justify-center items-center h-[10vh] text-zinc-600">
                         <span>JaVo © Copyright 2024</span>
                     </footer>
