@@ -9,6 +9,7 @@ import store from "@/redux/store";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { CriarEquipeButton } from "@/components/Equipes/CriaEquipeButton";
+import LogoLetter from "@/components/Logo/LogoLetter";
 
 const DashboardPage: React.FC = () => {
 
@@ -18,9 +19,9 @@ const DashboardPage: React.FC = () => {
     const [equipes, setEquipes] = useState<Equipe[]>([])
 
     useEffect(() => {
-        if (user){
+        if (user) {
             setEquipes(sample.filter(equipe => equipe.usuarios.includes(user.id)))
-        } 
+        }
     }, [user])
 
     return (
@@ -30,14 +31,18 @@ const DashboardPage: React.FC = () => {
                     <section className="flex min-h-[90vh] overflow-hidden">
                         <aside className="w-[30%] bg-zinc-950">
                             <div className="container flex flex-col  h-full p-8 overflow-y-auto">
-                                <span>*LOGO*</span>
-                                <CriarEquipeButton/>
-                                <div>
-                                    {equipes.map((equipe) => {
-                                        return (
-                                            <EquipeSelectButton id={equipe.id} nome={equipe.nome}/>
-                                        )
-                                    })}
+                                <div className="mb-4 p-8">
+                                    <LogoLetter />
+                                </div>
+                                <div className="flex flex-col gap-4">
+                                    <CriarEquipeButton />
+                                    <div>
+                                        {equipes.map((equipe) => {
+                                            return (
+                                                <EquipeSelectButton id={equipe.id} nome={equipe.nome} />
+                                            )
+                                        })}
+                                    </div>
                                 </div>
                             </div>
                         </aside>
