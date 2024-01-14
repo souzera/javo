@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/themes": "^1.7.9",
+    "fa-icons": "^0.2.0",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
