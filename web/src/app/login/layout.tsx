@@ -1,4 +1,4 @@
-const DashboardLayout: React.FC = ({ children }: React.PropsWithChildren<{}>) => {
+const LoginLayout:React.FC = ({ children }:React.PropsWithChildren<{}>) => {
     return (
         <div className="flex items-center justify-center">
             {children}
@@ -6,4 +6,4 @@ const DashboardLayout: React.FC = ({ children }: React.PropsWithChildren<{}>) =>
     )
 }
 
-export default DashboardLayout
+export default LoginLayout
