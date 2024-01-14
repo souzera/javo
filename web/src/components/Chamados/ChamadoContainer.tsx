@@ -7,32 +7,54 @@ interface ChamadoContainerProps {
 
 export default function ChamadoContainer({ chamado }: ChamadoContainerProps) {
 
-    let color = "px-4 rounded-2xl text-white font-bold stroke-[13vw] stroke-white"
+    let stylePrioridade = "px-4 rounded-2xl text-white font-bold stroke-[13vw] stroke-white"
+    let styleContainer = "flex flex-col flex-1 cursor-pointer text-white text-ellipsis p-4 gap-2 rounded-2xl transition ease-in-out duration-1000 hover:scale-105 overflow-hidden border-t-8 border-2"
 
     switch (chamado.prioridade.toLowerCase()) {
         case "alta":
-            color += " bg-red-500"
+            stylePrioridade += " bg-red-500"
             break;
         case "média":
-            color += " bg-yellow-500"
+            stylePrioridade += " bg-yellow-500"
             break;
         case "baixa":
-            color += " bg-gray-700"
+            stylePrioridade += " bg-gray-700"
             break;
         default:
-            color += " bg-gray-700"
+            stylePrioridade += " bg-gray-700"
+            break;
+    }
+
+    switch (chamado.status.toLowerCase()) {
+        case "aberto":
+            styleContainer += " border-t-blue-700"
+            break;
+        case "em andamento":
+            styleContainer += " border-t-yellow-700"
+            break;
+        case "fechado":
+            styleContainer += " border-t-orange-700"
+            break;
+        case "concluido":
+            styleContainer += " border-t-green-700"
+            break;
+        case "cancelado":
+            styleContainer += " border-t-red-700"
+            break;
+        default:
+            styleContainer += " border-t-blue-700"
             break;
     }
 
     return (
         <>
             <Draggable>
-                <div className="flex flex-col flex-1 cursor-pointer bg-zinc-800 text-white text-ellipsis p-4 gap-2 rounded-2xl transition ease-in-out duration-1000 hover:scale-105">
+                <div className={styleContainer}>
                     <h1 className="text-2xl font-bold">{chamado.titulo}</h1>
                     {chamado.descricao && <h3 className="">{chamado.descricao}</h3>}
                     <div className="flex justify-between">
                         <span className="font-bold" onClick={() => { console.log('abrir perfil do usuario') }}>{chamado.usuario}</span>
-                        <span className={color}>{chamado.prioridade}</span>
+                        <span className={stylePrioridade}>{chamado.prioridade}</span>
                     </div>
                 </div>
             </Draggable>
