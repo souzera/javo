@@ -6,8 +6,13 @@ import { Provider } from "react-redux";
 
 import { DragableListChamado } from "@/components/Chamados/DragableListChamado";
 import store from "@/redux/store";
+import { UserButton, useUser } from "@clerk/nextjs";
 
 const DashboardPage: React.FC = () => {
+    
+
+    const { user } = useUser();
+    console.log(user);
 
     return (
         <>
@@ -28,6 +33,9 @@ const DashboardPage: React.FC = () => {
                             </div>
                         </aside>
                         <main className="w-[70%] bg-zinc-900 overflow-auto">
+                            <div className="bg-zinc-950 flex justify-end p-4">
+                            <UserButton />
+                            </div>
                             <div className="h-full p-8">
                                 <DragableListChamado />
                             </div>
