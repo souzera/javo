@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { Chamado, sample } from "@/types/chamado"
 import ChamadoContainer from "./ChamadoContainer"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
 export function DragableListChamado() {
 

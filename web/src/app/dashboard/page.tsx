@@ -1,18 +1,24 @@
 'use client'
 
 import EquipeSelectButton from "@/components/Equipes/EquipeSelectButton";
-import { sample } from "@/types/equipe";
+import { Equipe, sample } from "@/types/equipe";
 import { Provider } from "react-redux";
 
 import { DragableListChamado } from "@/components/Chamados/DragableListChamado";
 import store from "@/redux/store";
 import { UserButton, useUser } from "@clerk/nextjs";
+import { useEffect, useState } from "react";
 
 const DashboardPage: React.FC = () => {
-    
+
 
     const { user } = useUser();
-    console.log(user);
+
+    const [equipes, setEquipes] = useState<Equipe[]>([])
+
+    useEffect(() => {
+        setEquipes(sample.filter(equipe => equipe.usuarios.includes(user?.id)))
+    }, [user])
 
     return (
         <>
@@ -24,17 +30,17 @@ const DashboardPage: React.FC = () => {
                                 <span>*LOGO*</span>
                                 Equipes
                                 <div>
-                                    {sample.map((equipe) => {
+                                    {equipes.map((equipe) => {
                                         return (
-                                            <EquipeSelectButton id={equipe.id} nome={equipe.nome} />
+                                            <EquipeSelectButton id={equipe.id} nome={equipe.nome}/>
                                         )
                                     })}
                                 </div>
                             </div>
                         </aside>
                         <main className="w-[70%] bg-zinc-900 overflow-auto">
-                            <div className="bg-zinc-950 flex justify-end p-4">
-                            <UserButton />
+                            <div className="flex justify-end p-4">
+                                <UserButton />
                             </div>
                             <div className="h-full p-8">
                                 <DragableListChamado />

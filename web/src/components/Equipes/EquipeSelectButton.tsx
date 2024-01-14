@@ -1,8 +1,14 @@
 import { toggleEquipe } from "@/redux/equipe/actions";
 import { Equipe } from "@/types/equipe";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-export default function EquipeSelectButton(props: Equipe) {
+//EQUIPE PROPS
+interface EquipeSelectButtonProps {
+  id: string;
+  nome: string;
+}
+
+export default function EquipeSelectButton({id, nome}: EquipeSelectButtonProps) {
 
   const dispatch = useDispatch()
 
@@ -12,8 +18,8 @@ export default function EquipeSelectButton(props: Equipe) {
 
   return (
     <>
-      <div onClick={() => handleToggleEquipe(props.id)} className="bg-zinc-900 rounded-full transition ease-in-out duration-1000 hover:scale-105 cursor-pointer">
-        <h1 className="font-bold text-xl text-white my-2 p-2 pl-4 ">{props.nome}</h1>
+      <div onClick={() => handleToggleEquipe(id)} className="bg-zinc-900 rounded-full transition ease-in-out duration-1000 hover:scale-105 cursor-pointer">
+        <h1 className="font-bold text-xl text-white my-2 p-2 pl-4 truncate">{nome}</h1>
       </div>
     </>
   )
