@@ -8,6 +8,7 @@ import { DragableListChamado } from "@/components/Chamados/DragableListChamado";
 import store from "@/redux/store";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
+import { CriarEquipeButton } from "@/components/Equipes/CriaEquipeButton";
 
 const DashboardPage: React.FC = () => {
 
@@ -17,7 +18,9 @@ const DashboardPage: React.FC = () => {
     const [equipes, setEquipes] = useState<Equipe[]>([])
 
     useEffect(() => {
-        setEquipes(sample.filter(equipe => equipe.usuarios.includes(user?.id)))
+        if (user){
+            setEquipes(sample.filter(equipe => equipe.usuarios.includes(user.id)))
+        } 
     }, [user])
 
     return (
@@ -28,7 +31,7 @@ const DashboardPage: React.FC = () => {
                         <aside className="w-[30%] bg-zinc-950">
                             <div className="container flex flex-col  h-full p-8 overflow-y-auto">
                                 <span>*LOGO*</span>
-                                Equipes
+                                <CriarEquipeButton/>
                                 <div>
                                     {equipes.map((equipe) => {
                                         return (
