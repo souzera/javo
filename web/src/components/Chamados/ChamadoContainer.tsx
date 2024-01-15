@@ -8,7 +8,9 @@ interface ChamadoContainerProps {
 export default function ChamadoContainer({ chamado }: ChamadoContainerProps) {
 
     let stylePrioridade = "px-4 rounded-2xl text-white font-bold stroke-[13vw] stroke-white"
-    let styleContainer = "flex flex-col flex-1 cursor-pointer text-white text-ellipsis p-4 gap-2 rounded-2xl transition ease-in-out duration-1000 hover:scale-105 overflow-hidden border-t-8 border-2"
+    let styleContainer = "flex flex-col flex-1 cursor-pointer text-white text-ellipsis p-4 gap-2 rounded-2xl transition ease-in-out duration-1000 hover:scale-105 overflow-hidden border-2"
+
+    let styleStatus = "h-4 w-4 rounded-full"
 
     switch (chamado.prioridade.toLowerCase()) {
         case "alta":
@@ -27,22 +29,22 @@ export default function ChamadoContainer({ chamado }: ChamadoContainerProps) {
 
     switch (chamado.status.toLowerCase()) {
         case "aberto":
-            styleContainer += " border-t-blue-700"
+            styleStatus += " bg-blue-700"
             break;
         case "em andamento":
-            styleContainer += " border-t-yellow-700"
+            styleStatus += " bg-yellow-700"
             break;
         case "fechado":
-            styleContainer += " border-t-orange-700"
+            styleStatus += " bg-orange-700"
             break;
         case "concluido":
-            styleContainer += " border-t-green-700"
+            styleStatus += " bg-green-700"
             break;
         case "cancelado":
-            styleContainer += " border-t-red-700"
+            styleStatus += " bg-red-700"
             break;
         default:
-            styleContainer += " border-t-blue-700"
+            styleStatus += " bg-blue-700"
             break;
     }
 
@@ -50,6 +52,10 @@ export default function ChamadoContainer({ chamado }: ChamadoContainerProps) {
         <>
             <Draggable>
                 <div className={styleContainer}>
+                    <div className="flex justify-start items-center gap-2 border py-1 pl-2 rounded-full">
+                        <div className={styleStatus} />
+                        <span className="">{chamado.status}</span>
+                    </div>
                     <h1 className="text-2xl font-bold">{chamado.titulo}</h1>
                     {chamado.descricao && <h3 className="">{chamado.descricao}</h3>}
                     <div className="flex justify-between">
