@@ -1,5 +1,4 @@
 import { toggleEquipe } from "@/redux/equipe/actions";
-import { Equipe } from "@/types/equipe";
 import { useDispatch } from "react-redux";
 
 //EQUIPE PROPS

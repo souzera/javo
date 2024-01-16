@@ -1,8 +1,8 @@
 'use client'
 
 import EquipeSelectButton from "@/components/Equipes/EquipeSelectButton";
-import { Equipe, sample } from "@/types/equipe";
-import { Provider } from "react-redux";
+import { Equipe, sampleEquipes } from "@/types/equipe";
+import { Provider, useDispatch, useSelector } from "react-redux";
 
 import { DragableListChamado } from "@/components/Chamados/DragableListChamado";
 import store from "@/redux/store";
@@ -10,6 +10,7 @@ import { UserButton, useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { CriarEquipeButton } from "@/components/Equipes/CriaEquipeButton";
 import LogoLetter from "@/components/Logo/LogoLetter";
+import { sampleUsers } from "@/types/usuario";
 
 const DashboardPage: React.FC = () => {
 
@@ -20,7 +21,8 @@ const DashboardPage: React.FC = () => {
 
     useEffect(() => {
         if (user) {
-            setEquipes(sample.filter(equipe => equipe.usuarios.includes(user.id)))
+            const id_equipes = sampleUsers.find((u) => u.id === user.id)?.equipes
+            setEquipes(sampleEquipes.filter((equipe) => id_equipes?.includes(equipe.id)))
         }
     }, [user])
 
