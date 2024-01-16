@@ -2,7 +2,7 @@
 
 import EquipeSelectButton from "@/components/Equipes/EquipeSelectButton";
 import { Equipe, sampleEquipes } from "@/types/equipe";
-import { Provider, useDispatch, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 
 import { DragableListChamado } from "@/components/Chamados/DragableListChamado";
 import store from "@/redux/store";
