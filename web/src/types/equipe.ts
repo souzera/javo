@@ -1,5 +1,3 @@
-import { Usuario } from "./usuario";
-
 export interface Equipe{
     id: string;
     nome: string;

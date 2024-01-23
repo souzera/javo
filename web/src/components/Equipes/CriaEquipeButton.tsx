@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { HiPlusCircle } from "react-icons/hi";
 
-import {Modal} from "antd"
+import { Button, Form, Input, Modal } from "antd"
+import { RiTeamFill } from "react-icons/ri";
 
 export function CriarEquipeButton() {
 
@@ -29,10 +30,22 @@ export function CriarEquipeButton() {
         <HiPlusCircle size={24} />
         <span>Criar Equipe</span>
       </button>
-      <Modal title="Basic Modal" open={modalIsOpen} onOk={handleOk} onCancel={handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Modal title="Basic Modal" open={modalIsOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
+        <Form 
+          layout="vertical"
+          onFinish={handleOk}>
+          <Form.Item
+            rules={[{ required: true, message: 'Por favor, insira o nome da equipe!' }]}
+            name={"nome"}
+          >
+            <Input placeholder="Nome da Equipe" prefix={<RiTeamFill size={32} color={"#e5e5e5"} />} />
+          </Form.Item>
+          <Form.Item>
+            <div className="flex justify-end">
+              <Button htmlType="submit" className="border-2 border-black rounded-full">Criar Equipe</Button>
+            </div>
+          </Form.Item>
+        </Form>
       </Modal>
     </>
 
