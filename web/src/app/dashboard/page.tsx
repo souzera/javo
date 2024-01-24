@@ -21,10 +21,10 @@ const DashboardPage: React.FC = () => {
 
     useEffect(() => {
         if (user) {
-            const id_equipes = sampleUsers.find((u) => u.id === user.id)?.equipes
-            setEquipes(sampleEquipes.filter((equipe) => id_equipes?.includes(equipe.id)))
+            const equipesUser = sampleUsers.find((u) => u.id === user.id)?.equipes
+            setEquipes(sampleEquipes.filter((equipe) => equipesUser?.includes(equipe)))
         }
-    }, [user])
+    }, [user, equipes])
 
     return (
         <>

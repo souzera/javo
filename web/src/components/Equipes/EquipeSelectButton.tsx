@@ -1,4 +1,5 @@
 import { toggleEquipe } from "@/redux/equipe/actions";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 //EQUIPE PROPS

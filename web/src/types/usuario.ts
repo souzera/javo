@@ -1,7 +1,9 @@
+import { Equipe } from "./equipe";
+
 export interface Usuario {
   id: string;
   apelido: string;
-  equipes: string[];
+  equipes: Equipe[];
 }
 
 export const sampleUsers: Usuario[] = [
@@ -11,5 +13,5 @@ export const sampleUsers: Usuario[] = [
   { id: '4', apelido: 'Junior', equipes:[]},
   { id: '5', apelido: 'Ana', equipes:[] },
   { id: '6', apelido: 'Maria', equipes:[] },
-  { id: 'user_2axAJ9MJR8Aw3y0paRVkO62IbDq', apelido: 'Rokusho', equipes:["2","4"]},
+  { id: 'user_2axAJ9MJR8Aw3y0paRVkO62IbDq', apelido: 'Rokusho', equipes:[]},
 ]
