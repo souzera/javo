@@ -7,24 +7,42 @@ import { Provider } from "react-redux";
 import { DragableListChamado } from "@/components/Chamados/DragableListChamado";
 import store from "@/redux/store";
 import { UserButton, useUser } from "@clerk/nextjs";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { CriarEquipeButton } from "@/components/Equipes/CriaEquipeButton";
 import LogoLetter from "@/components/Logo/LogoLetter";
-import { sampleUsers } from "@/types/usuario";
+import { Usuario, sampleUsers } from "@/types/usuario";
+import addUsuario from "@/services/add-usuario";
 
 const DashboardPage: React.FC = () => {
 
 
     const { user } = useUser();
 
+    const [currentUser, setCurrentUser] = useState<Usuario>({ id: "", apelido: "", equipes: [] })
     const [equipes, setEquipes] = useState<Equipe[]>([])
 
+
     useEffect(() => {
-        if (user) {
+        if (user && user.username) {
             const equipesUser = sampleUsers.find((u) => u.id === user.id)?.equipes
+            setCurrentUser({ id: user.id, apelido: user.username, equipes: sampleEquipes.filter((equipe) => equipesUser?.includes(equipe)) })
+
             setEquipes(sampleEquipes.filter((equipe) => equipesUser?.includes(equipe)))
+    
+            sampleUsers.forEach((u) => {
+                if (u.id === user.id) {
+                    console.log(sampleUsers)
+                    return
+                }
+            })
+    
+            addUsuario(currentUser)
+
+    
+            console.log(sampleEquipes)
         }
-    }, [user, equipes])
+    }, [equipes, currentUser])
+
 
     return (
         <>
@@ -39,7 +57,7 @@ const DashboardPage: React.FC = () => {
                                 <div className="flex flex-col gap-4">
                                     <CriarEquipeButton />
                                     <div>
-                                        {equipes.map((equipe) => {
+                                        {currentUser.equipes.map((equipe) => {
                                             return (
                                                 <EquipeSelectButton id={equipe.id} nome={equipe.nome} />
                                             )

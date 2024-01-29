@@ -1,5 +1,5 @@
 import { Usuario, sampleUsers } from "@/types/usuario";
 
-export default function AddUsuario(usuario: Usuario) {
+export default function addUsuario(usuario: Usuario) {
     return sampleUsers.push(usuario);
 }

@@ -13,5 +13,6 @@ export const sampleUsers: Usuario[] = [
   { id: '4', apelido: 'Junior', equipes:[]},
   { id: '5', apelido: 'Ana', equipes:[] },
   { id: '6', apelido: 'Maria', equipes:[] },
-  { id: 'user_2axAJ9MJR8Aw3y0paRVkO62IbDq', apelido: 'Rokusho', equipes:[]},
+  { id: 'user_2axAJ9MJR8Aw3y0paRVkO62IbDq', apelido: 'Rokusho', equipes:[{id: '1', nome: 'Suporte'},
+  {id: '2', nome: 'Desenvolvimento'}]},
 ]
