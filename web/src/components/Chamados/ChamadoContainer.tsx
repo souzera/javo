@@ -1,4 +1,4 @@
-import { Chamado } from "@/types/chamado"
+import { Chamado } from "@/types/call"
 import Draggable from "react-draggable";
 
 interface ChamadoContainerProps {

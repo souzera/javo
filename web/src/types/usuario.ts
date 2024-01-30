@@ -1,18 +1,11 @@
-import { Equipe } from "./equipe";
-
 export interface Usuario {
-  id: string;
-  apelido: string;
-  equipes: Equipe[];
+  id_profile: string;
+  user: any;
+  url_avatar: string;
 }
 
-export const sampleUsers: Usuario[] = [
-  { id: '1', apelido: 'João', equipes:[]},
-  { id: '2', apelido: 'Maria', equipes:[]},
-  { id: '3', apelido: 'Matheus', equipes:[] },
-  { id: '4', apelido: 'Junior', equipes:[]},
-  { id: '5', apelido: 'Ana', equipes:[] },
-  { id: '6', apelido: 'Maria', equipes:[] },
-  { id: 'user_2axAJ9MJR8Aw3y0paRVkO62IbDq', apelido: 'Rokusho', equipes:[{id: '1', nome: 'Suporte'},
-  {id: '2', nome: 'Desenvolvimento'}]},
-]
+export const defaultUsuario: Usuario = {
+    id_profile: "4e572c01-1a6b-4883-a9a8-4cec2fc859a8",
+    user: "matheus",
+    url_avatar: "https://i.pinimg.com/736x/0f/b8/db/0fb8dbfa0417a256a35c386b8f162a96.jpg"
+}

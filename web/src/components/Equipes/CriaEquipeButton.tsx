@@ -4,26 +4,26 @@ import { HiPlusCircle } from "react-icons/hi";
 import { Button, Form, Input, Modal } from "antd"
 import { RiTeamFill } from "react-icons/ri";
 import addEquipe from "@/services/add-equipe";
-import { Equipe, sampleEquipes } from "@/types/equipe";
+import { Equipe } from "@/types/equipe";
 import { useUser } from "@clerk/nextjs";
-import { sampleUsers } from "@/types/usuario";
+import { defaultUsuario } from "@/types/usuario";
 
 export function CriarEquipeButton() {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const { user } = useUser();
+  const [ user, setUser ] = useState(defaultUsuario);
 
-  const [novaEquipe, setNovaEquipe] = useState<Equipe>({id:(sampleEquipes.length+1).toString(), nome:""});
+  
 
   const showModal = () => {
     setModalIsOpen(true);
   }
 
   const handleOk = () => {
-    addEquipe(novaEquipe);
-    if (user) {sampleUsers.find((u) => u.id === user.id)?.equipes.push(novaEquipe)
-    sampleUsers.find((u) => console.log(u))}
+    //addEquipe(novaEquipe);
+    //if (user) {sampleUsers.find((u) => u.id === user.id)?.equipes.push(novaEquipe)
+    //sampleUsers.find((u) => console.log(u))}
     setModalIsOpen(false);
   }
 
@@ -46,7 +46,7 @@ export function CriarEquipeButton() {
           layout="vertical"
           onFinish={handleOk}
           onChange={(values:any)=>{
-            setNovaEquipe({...novaEquipe, nome:values.target.value})
+            //setNovaEquipe({...novaEquipe, nome:values.target.value})
           }}>
           <Form.Item
             rules={[{ required: true, message: 'Por favor, insira o nome da equipe!' }]}
