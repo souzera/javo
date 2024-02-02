@@ -16,7 +16,6 @@ class Usuario(models.Model):
         return self.user
     
     def get_data_dict(self):
-        print(self.get_user())
         return {
             "id_profile": self.id_profile,
             "username": self.user.username,
