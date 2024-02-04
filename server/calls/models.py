@@ -15,12 +15,6 @@ class Usuario(models.Model):
     def get_user(self):
         return self.user
     
-    def get_data_dict(self):
-        return {
-            "id_profile": self.id_profile,
-            "username": self.user.username,
-            "url_avatar": self.url_avatar
-        }
 
 class Status(models.Model):
     id_status =  models.UUIDField(primary_key=True, default=uuid4, editable=False)
@@ -28,12 +22,6 @@ class Status(models.Model):
     
     def __str__(self):
         return self.nome
-    
-    def get_data_dict(self):
-        return {
-            "id_status": self.id_status,
-            "nome": self.nome
-        }
     
     
 class Prioridade(models.Model):
@@ -43,11 +31,6 @@ class Prioridade(models.Model):
     def __str__(self):
         return self.nome
     
-    def get_data_dict(self):
-        return {
-            "id_prioridade": self.id_prioridade,
-            "nome": self.nome
-        }
     
 class Equipe(models.Model):
     id_equipe =  models.UUIDField(primary_key=True, default=uuid4, editable=False)
@@ -61,15 +44,6 @@ class Equipe(models.Model):
     
     def get_integrantes(self):
         return [usuario.get_data_dict() for usuario in self.integrantes.all()]
-    
-    def get_data_dict(self):
-        return {
-            "id_equipe": self.id_equipe,
-            "nome": self.nome,
-            "desc": self.desc,
-            "icon_url": self.icon_url,
-            "integrantes": self.get_integrantes(),
-        }
 
 class Call(models.Model):
     id_call =  models.UUIDField(primary_key=True, default=uuid4, editable=False)
@@ -84,19 +58,6 @@ class Call(models.Model):
     
     def __str__(self):
         return self.titulo
-    
-    def get_data_dict(self):
-        return {
-            "id_call": self.id_call,
-            "titulo": self.titulo,
-            "status": self.status.nome,
-            "desc": self.desc,
-            "prioridade": self.prioridade.nome,
-            "dt_criacao": self.dt_criacao,
-            "created_by": self.created_por,
-            "created_for": self.created_para,
-        }
-    
     
 
     

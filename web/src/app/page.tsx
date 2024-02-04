@@ -1,4 +1,4 @@
-import LogoLetter from "@/components/Logo/LogoLetter";
+import { LogoLetter } from "../components/Logo/LogoLetter";
 import Link from "next/link";
 
 export default function Home() {

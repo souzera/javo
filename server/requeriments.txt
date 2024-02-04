@@ -1,7 +1,11 @@
 annotated-types==0.6.0
 asgiref==3.7.2
+contextlib2==21.6.0
 Django==5.0.1
+django-cors-headers==4.3.1
 django-ninja==1.1.0
+django-ninja-extra==0.20.3
+injector==0.21.0
 pydantic==2.6.0
 pydantic_core==2.16.1
 sqlparse==0.4.4

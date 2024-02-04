@@ -1,5 +1,3 @@
-import { Equipe, sampleEquipes } from "@/types/equipe";
+import { Equipe } from "../types/equipe";
 
-export default function addEquipe(equipe: Equipe) {
-    return sampleEquipes.push(equipe);
-}
+export default function addEquipe(equipe: Equipe) {}

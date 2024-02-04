@@ -1,7 +1,6 @@
-import Image from "next/image";
-import logo from "@/assets/SVG/logo.svg"
+import logo from "../../assets/SVG/logo.svg"
 
-export default function LogoLetter() {
+export function LogoLetter() {
   return (
     <img className="h-full"
       src={logo.src}

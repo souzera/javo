@@ -1,14 +1,12 @@
-import { toggleEquipe } from "@/redux/equipe/actions";
-import { useEffect } from "react";
+import { toggleEquipe } from "../../redux/equipe/actions";
 import { useDispatch } from "react-redux";
 
-//EQUIPE PROPS
 interface EquipeSelectButtonProps {
   id: string;
   nome: string;
 }
 
-export default function EquipeSelectButton({id, nome}: EquipeSelectButtonProps) {
+export function EquipeSelectButton({id, nome}: EquipeSelectButtonProps) {
 
   const dispatch = useDispatch()
 

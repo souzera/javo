@@ -1,7 +1,7 @@
 
 
 import { useEffect, useState } from "react"
-import { Call} from "@/types/call"
+import { Call} from "../../types/call"
 import ChamadoContainer from "./ChamadoContainer"
 import { useSelector } from "react-redux"
 

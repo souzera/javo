@@ -1,52 +1,42 @@
-from ninja import Schema, Field
+from ninja import ModelSchema, Field
+from .models import Usuario, Call, Equipe, Status, Prioridade
 
-class UsuarioSchema(Schema):
-    id_profile: str
-    username: str
-    url_avatar: str
+class UsuarioSchema(ModelSchema):
     
-class StatusSchema(Schema):
-    id_status: str
-    nome: str
+
+    user: str = Field(None, alias='user.username')
+    class Meta:
+        model = Usuario
+        fields = "__all__"
+        fields_optional = ['url_avatar']
     
-class PrioridadeSchema(Schema):
-    id_prioridade: str
-    nome: str
     
-class EquipeSchema(Schema):
-    id_equipe: str
-    nome: str
-    desc: str
-    icon_url: str
+class StatusSchema(ModelSchema):
+    
+    class Meta:
+        model = Status
+        fields = "__all__"
+    
+class PrioridadeSchema(ModelSchema):
+    
+    class Meta:
+        model = Prioridade
+        fields = "__all__"
+    
+class EquipeSchema(ModelSchema):
     integrantes: list[UsuarioSchema]
     
-class CallSchema(Schema):
-    id_call: str
-    titulo: str
-    descricao: str
-    status: StatusSchema
-    prioridade: PrioridadeSchema
-    equipe: EquipeSchema
-    criador: UsuarioSchema
-    responsavel: UsuarioSchema
-    data_criacao: str
-    data_modificacao: str
-    data_limite: str
-    data_conclusao: str
-    url_anexo: str
-    comentarios: list[str]
-    tags: list[str]
-    url_avatar: str
-    url_avatar_responsavel: str
-    url_avatar_criador: str
-    url_avatar_equipe: str
-    url_avatar_status: str
-    url_avatar_prioridade: str
-    url_avatar_comentarios: str
-    url_avatar_tags: str
-    url_avatar_anexo: str
-    url_avatar_data_criacao: str
-    url_avatar_data_modificacao: str
-    url_avatar_data_limite: str
-    url_avatar_data_conclusao
+    class Meta:
+        model = Equipe
+        fields = "__all__"
+        fiels_optional = ['desc','icon_url']
+    
+class CallSchema(ModelSchema):
+    
+    class Meta:
+        model = Call
+        fields = "__all__"
+        fields_optional = ['desc','criado_para']
+ 
+    
     

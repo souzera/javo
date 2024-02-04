@@ -1,8 +1,8 @@
-import { Chamado } from "@/types/call"
 import Draggable from "react-draggable";
+import { Call } from "../../types/call";
 
 interface ChamadoContainerProps {
-    chamado: Chamado
+    chamado: Call
 }
 
 export default function ChamadoContainer({ chamado }: ChamadoContainerProps) {
