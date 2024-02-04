@@ -1,3 +1,4 @@
+import { Usuario } from "../../types/usuario";
 import UserActionTypes from "./action-types";
 
 const initialState = {

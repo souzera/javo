@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { Call} from "../../types/call"
 import ChamadoContainer from "./ChamadoContainer"
 import { useSelector } from "react-redux"
+import { getCallsByEquipe } from "../../services/call/get-calls"
 
 export function DragableListChamado() {
 
@@ -12,14 +13,16 @@ export function DragableListChamado() {
 
     const { currentEquipe } = useSelector((state: any) => state.equipeReducer)
 
-    //TODO: Criar um endpoint para buscar os chamados de uma equipe
     useEffect(()=>{
-        //setChamados(sampleChamados.filter(chamado => chamado.id_equipe === currentEquipe))
+        getCallsByEquipe(currentEquipe).then((response)=>{
+            console.log(response)
+            setChamados(response)
+        })
     },[currentEquipe])
 
     return (
         <>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-3 gap-4 auto-cols-auto">
                 {chamados.map((chamado) => {
                     return (
                         <ChamadoContainer chamado={chamado} />

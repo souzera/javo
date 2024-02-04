@@ -3,7 +3,7 @@ import { HiPlusCircle } from "react-icons/hi";
 
 import { Button, Form, Input, Modal } from "antd"
 import { RiTeamFill } from "react-icons/ri";
-import addEquipe from "../../services/add-equipe";
+import addEquipe from "../../services/equipe/add-equipe";
 import { Equipe } from "../../types/equipe";
 import { defaultUsuario } from "../../types/usuario";
 

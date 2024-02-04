@@ -1,6 +1,6 @@
 export interface Usuario {
   id_profile: string;
-  user: any;
+  user: string;
   url_avatar: string;
 }
 
