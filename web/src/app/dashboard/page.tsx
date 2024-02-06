@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Equipe, defaultEquipes } from "../../types/equipe";
 import { Usuario, defaultUsuario } from "../../types/usuario";
 
-import { Provider, useDispatch, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 import store from "../../redux/store";
 
 import { EquipeSelectButton } from "../../components/Equipes/EquipeSelectButton";
