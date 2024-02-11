@@ -4,8 +4,12 @@ from .schemas import EquipeSchema
 from .models import Equipe, Usuario, Call
 from django.shortcuts import get_object_or_404
 from .schemas import UsuarioSchema, CallSchema
+from ninja_jwt.controller import TokenObtainPairController
 
-
+@api_controller('token', tags=['Auth'])
+class AuthRouter(TokenObtainPairController):
+    """obtain_token and refresh_token only"""
+    
 @api_controller('/usuarios', tags=['Usuarios'])
 class UsuarioRouter:
 
