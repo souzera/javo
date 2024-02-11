@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Equipe, defaultEquipes } from "../../types/equipe";
 import { Usuario, defaultUsuario } from "../../types/usuario";
 
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import store from "../../redux/store";
 
 import { EquipeSelectButton } from "../../components/Equipes/EquipeSelectButton";
@@ -15,15 +15,15 @@ import { LogoLetter } from "../../components/Logo/LogoLetter";
 import { Avatar, Dropdown, MenuProps, Space } from "antd";
 import { getEquipesByUser } from "../../services/equipe/get-equipes";
 import { MdArrowDropDownCircle } from "react-icons/md";
+import { getStorageAuth, removeStorageAuth } from "../../util/storage";
 
 
 
 const DashboardPage: React.FC = () => {
 
-    const [currentUser, setCurrentUser] = useState<Usuario>(defaultUsuario)
 
-    //const {currentUser} = useSelector((state: any)=> state.userReducer)
-
+    const auth = getStorageAuth()
+    const [currentUser, setCurrentUser] = useState<Usuario>(auth.currentUser || defaultUsuario)
     const [currentEquipes, setCurrentEquipes] = useState<Equipe[]>(defaultEquipes)
 
     useEffect(() => {
@@ -33,6 +33,11 @@ const DashboardPage: React.FC = () => {
             })
         }
     }, [])
+
+    const logout = () => {
+        removeStorageAuth()
+        window.location.href = '/login'
+    }
 
     const items: MenuProps['items'] = [
         {
@@ -47,7 +52,7 @@ const DashboardPage: React.FC = () => {
             type: 'divider',
         },
         {
-            label: <div onClick={() => { console.log("Saindo ...") }}>Sair</div>,
+            label: <div onClick={logout}>Sair</div>,
             key: '3',
         },
     ];

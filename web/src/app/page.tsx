@@ -11,7 +11,7 @@ export default function Home() {
           <LogoLetter />
         </div>
         <div>
-          <Link href={"/dashboard"} className="bg-zinc-900 text-white py-2 px-4 rounded-full hover:bg-zinc-600 focus:outline-none focus:shadow-outline-blue active:bg-zinc-800 font-semibold">
+          <Link href={"/login"} className="bg-zinc-900 text-white py-2 px-4 rounded-full hover:bg-zinc-600 focus:outline-none focus:shadow-outline-blue active:bg-zinc-800 font-semibold">
             Entrar
           </Link>
         </div>

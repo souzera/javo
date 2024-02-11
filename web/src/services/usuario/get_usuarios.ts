@@ -7,3 +7,9 @@ export function getUsuarioById(id_profile: string) {
 
     return usuario
 }
+
+export function getUsuarioByUsername(username: string) {
+    const usuario: Promise<Usuario> = axios.get(`${JAVO_API_URL}usuarios/profile/${username}`).then((response) => { return response.data })
+
+    return usuario
+}

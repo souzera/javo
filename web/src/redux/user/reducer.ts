@@ -2,7 +2,9 @@ import { Usuario } from "../../types/usuario";
 import UserActionTypes from "./action-types";
 
 const initialState = {
-    currentUser: null
+    currentUser: null,
+    access_token: null,
+    refresh_token: null
 }
 
 const userReducer = (state = initialState, action:any) => {
