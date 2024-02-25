@@ -1,16 +1,19 @@
-import { LogoLetter } from "../components/Logo/LogoLetter";
 import Link from "next/link";
+import { LogoLetter } from "../components/Logo/LogoLetter";
 
 export default function Home() {
   return (<>
     <div className="flex flex-col min-h-screen bg-zinc-950 text-white">
-      
+
       {/* Header */}
       <header className="flex justify-around bg-zinc-950 h-[10vh] p-4">
-        <div className="container mx-auto">
+        <div className="">
           <LogoLetter />
         </div>
         <div>
+          <Link href={"/register"} className="text-white mr-4 hover:text-zinc-500 focus:outline-none focus:shadow-outline-blue active:text-zinc-400">
+            Registrar
+          </Link>
           <Link href={"/login"} className="bg-zinc-900 text-white py-2 px-4 rounded-full hover:bg-zinc-600 focus:outline-none focus:shadow-outline-blue active:bg-zinc-800 font-semibold">
             Entrar
           </Link>
@@ -20,12 +23,14 @@ export default function Home() {
       {/* Main Content */}
       <main className="flex flex-col justify-center items-center container mx-auto mt-8 mb-5">
         {/* Call to Action Section */}
-        <section className="bg-zinc-900 w-[80vw] p-8 rounded-lg shadow-md text-center">
+        <section className="flex flex-col gap-1 bg-zinc-950 border-white border-2 rounded-3xl w-[80vw] p-8 shadow-md text-center">
           <h2 className="text-2xl font-bold mb-4">Melhore seu Suporte Técnico com JaVo</h2>
           <p className="text-gray-600">Solução eficiente para gerenciar chamados de suporte e melhorar a comunicação com os usuários.</p>
-          <button className="mt-4 bg-zinc-500 text-white py-2 px-4 rounded-full hover:bg-zinc-600 focus:outline-none focus:shadow-outline-blue active:bg-zinc-800">
-            Comece Agora
-          </button>
+          <div className="flex flex-1 justify-center items-center transition ease-in-out duration-700 hover:scale-105">
+            <Link href={"/login"} className="mt-4 bg-zinc-950 font-bold border-white border-2 text-white py-2 px-4 rounded-full hover:bg-zinc-600 focus:outline-none focus:shadow-outline-blue active:bg-zinc-800">
+              Comece Agora
+            </Link>
+          </div>
         </section>
 
         {/* Features Section */}

@@ -22,6 +22,11 @@ class UsuarioRouter:
     def get(self, request, id_profile, **kwargs):
         usuario = get_object_or_404(Usuario, id_profile=id_profile)
         return usuario
+    
+    @route.get('/profile/{user}', response=UsuarioSchema)
+    def get_by_user(self, request, user, **kwargs):
+        usuario = get_object_or_404(Usuario, user__username=user)
+        return usuario
 
     @route.get('/{id_profile}/equipes', response=list[EquipeSchema])
     def listar_equipes(self, request, id_profile, **kwargs):

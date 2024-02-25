@@ -3,7 +3,6 @@ from .models import Usuario, Call, Equipe, Status, Prioridade
 
 class UsuarioSchema(ModelSchema):
     
-
     user: str = Field(None, alias='user.username')
     class Meta:
         model = Usuario

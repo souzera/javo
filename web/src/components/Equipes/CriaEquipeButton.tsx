@@ -3,24 +3,17 @@ import { HiPlusCircle } from "react-icons/hi";
 
 import { Button, Form, Input, Modal } from "antd"
 import { RiTeamFill } from "react-icons/ri";
-import addEquipe from "../../services/equipe/add-equipe";
-import { Equipe } from "../../types/equipe";
 import { defaultUsuario } from "../../types/usuario";
 
 export function CriarEquipeButton() {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const [ user, setUser ] = useState(defaultUsuario);
-
   const showModal = () => {
     setModalIsOpen(true);
   }
 
   const handleOk = () => {
-    //addEquipe(novaEquipe);
-    //if (user) {sampleUsers.find((u) => u.id === user.id)?.equipes.push(novaEquipe)
-    //sampleUsers.find((u) => console.log(u))}
     setModalIsOpen(false);
   }
 

@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { useDispatch } from "react-redux"
 import { getAuth } from "../../services/auth/get-auth"
 import { getUsuarioByUsername } from "../../services/usuario/get_usuarios"
 import { Usuario } from "../../types/usuario"

@@ -16,6 +16,7 @@ import { Avatar, Dropdown, MenuProps, Space } from "antd";
 import { getEquipesByUser } from "../../services/equipe/get-equipes";
 import { MdArrowDropDownCircle } from "react-icons/md";
 import { getStorageAuth, removeStorageAuth } from "../../util/storage";
+import CriarTicketButton from "../../components/Chamados/CriarTicketButton";
 
 
 
@@ -78,15 +79,21 @@ const DashboardPage: React.FC = () => {
                             </div>
                         </aside>
                         <main className="w-[70%] bg-zinc-900">
-                            <div className="flex justify-end p-4 gap-4">
-                                <div className="text-white flex flex-col justify-end">
-                                    <span className="font-semibold text-lg">
+                            <div className="flex justify-end items-center p-4 gap-4 -z-40 bg-transparent">
+                                <div className="w-full p-2">
+                                    <div className="flex">
+                                        <CriarTicketButton />
+                                    </div>
+                                </div>
+
+                                <div className="text-white flex flex-col justify-end items-center">
+                                    <span className="font-semibold text-lg ">
                                         {currentUser.user}
                                     </span>
                                     <Dropdown menu={{ items }} trigger={['click']} className="font-thin text-xs flex justify-end items-center cursor-pointer">
                                         <a onClick={(e) => e.preventDefault()}>
                                             <Space>
-                                                settings
+                                                Settings
                                                 <MdArrowDropDownCircle />
                                             </Space>
                                         </a>
