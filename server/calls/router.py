@@ -47,6 +47,11 @@ class EquipeRouter:
         calls = Call.objects.filter(equipe__id_equipe=equipe_id)
         return list(calls)
 
+    @route.get('/{id_equipe}/users', response=list[UsuarioSchema])
+    def listar_integrantes(self, request, id_equipe, **kwargs):
+        users = Usuario.objects.filter(equipe__id_equipe=id_equipe)
+        return list(users)
+
 
 @api_controller('/calls', tags=['Calls'])
 class CallRouter:

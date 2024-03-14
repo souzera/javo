@@ -1,4 +1,4 @@
-const prioridadeMapper = [
+export const prioridadeMapper = [
     {
         id: '79d95d76-3674-4b6f-983b-af160f5e9b56',
         descricao: 'Baixa'
@@ -16,6 +16,10 @@ const prioridadeMapper = [
         descricao: 'Urgente'
     }
 ]
+
+export const getPrioridadeOptions = () => {
+    //TODO: Implementar a função que retorna as opções de prioridade
+}
 
 export const getPrioridadeDescricao = (id: string) => {
     const prioridade = prioridadeMapper.find((prioridade) => prioridade.id === id)

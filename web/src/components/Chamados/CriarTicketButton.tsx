@@ -1,17 +1,23 @@
 import { Modal } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiPlusCircle } from "react-icons/hi";
 import { useSelector } from "react-redux"
 import { getStorageAuth } from "../../util/storage";
 import TicketForm from "../Form/TicketForm";
+import { getUsersByEquipe } from "../../services/equipe/get-users-by-equipe";
 
 const CriarTicketButton: React.FC = () => {
 
     const { currentEquipe } = useSelector((state: any) => state.equipeReducer)
 
-    const auth = getStorageAuth()
-
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [integrantes, setIntegrantes] = useState([]);
+
+    useEffect(() => {
+        getUsersByEquipe(currentEquipe).then((response) => {
+            setIntegrantes(response);
+        })
+    }, [currentEquipe])
 
     const showModal = () => {
         setModalIsOpen(true);
@@ -37,7 +43,7 @@ const CriarTicketButton: React.FC = () => {
             }
 
             <Modal open={modalIsOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
-                <TicketForm/>
+                <TicketForm integrantes={integrantes} currentEquipe={currentEquipe}/>
             </Modal>
         </>
     )
