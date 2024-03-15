@@ -8,16 +8,16 @@ import { getCallsByEquipe } from "../../services/call/get-calls"
 
 export function DragableListChamado() {
 
-    
     const [chamados, setChamados] = useState<Call[]>([])
-
+    
     const { currentEquipe } = useSelector((state: any) => state.equipeReducer)
 
     useEffect(()=>{
-        getCallsByEquipe(currentEquipe).then((response)=>{
-            console.log(response)
-            setChamados(response)
-        })
+        if (currentEquipe){
+            getCallsByEquipe(currentEquipe).then((response)=>{
+                setChamados(response)
+            })
+        }
     },[currentEquipe])
 
     return (

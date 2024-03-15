@@ -1,10 +1,11 @@
 from ninja import Router
 from ninja_extra import api_controller, route
-from .schemas import EquipeSchema
-from .models import Equipe, Usuario, Call
 from django.shortcuts import get_object_or_404
-from .schemas import UsuarioSchema, CallSchema
 from ninja_jwt.controller import TokenObtainPairController
+from .models import *
+from .schemas import EquipeSchema
+from .schemas import UsuarioSchema, CallSchema
+from .utils import getData
 
 @api_controller('token', tags=['Auth'])
 class AuthRouter(TokenObtainPairController):
@@ -65,3 +66,34 @@ class CallRouter:
     def listar_calls(self, request, **kwargs):
         calls = Call.objects.all()
         return list(calls)
+
+    @route.post("/", response=CallSchema)
+    def create_call(self, request, **kwargs):
+        data = getData(request.body)
+        '''
+        {
+            'titulo': 'Fazer playlist TekuDriver', 
+            'status': 'a0c63b66-334f-4843-a8ae-6ba073125e01', 
+            'desc': 'shirakao takamoto selection hits to driver', 
+            'prioridade': '73e25b47-78c6-482a-babb-952fc8790c1b', 
+            'id_equipe': 'f50553a3-6c2a-4a54-848b-177a82e9b170', 
+            'criado_por': '4e572c01-1a6b-4883-a9a8-4cec2fc859a8', 
+            'criado_para': 'c166c520-0f51-408e-9dd5-c34a7859dfdf'
+        }
+        '''
+        status = Status.objects.get(id_status=data['status'])
+        prioridade = Prioridade.objects.get(id_prioridade=data['prioridade'])
+        equipe = Equipe.objects.get(id_equipe=data['id_equipe'])
+        criado_por = Usuario.objects.get(id_profile=data['criado_por'])
+        criado_para = Usuario.objects.get(id_profile=data['criado_para'])
+
+        call = Call.objects.create(
+            titulo=data['titulo'],
+            status=status,
+            desc=data['desc'],
+            prioridade=prioridade,
+            equipe=equipe,
+            criado_por=criado_por,
+            criado_para=criado_para
+        )
+        return call

@@ -22,17 +22,17 @@ import CriarTicketButton from "../../components/Chamados/CriarTicketButton";
 
 const DashboardPage: React.FC = () => {
 
-
     const auth = getStorageAuth()
     const [currentUser, setCurrentUser] = useState<Usuario>(auth.currentUser || defaultUsuario)
     const [currentEquipes, setCurrentEquipes] = useState<Equipe[]>(defaultEquipes)
 
     useEffect(() => {
         if (currentUser) {
+            console.log('currentUser logado')
             getEquipesByUser(currentUser.id_profile).then((response) => {
                 setCurrentEquipes(response)
             })
-        }
+        }else{console.log('currentUser não está logado')}
     }, [])
 
     const logout = () => {

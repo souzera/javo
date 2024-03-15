@@ -2,7 +2,6 @@ import { Modal } from "antd";
 import { useEffect, useState } from "react";
 import { HiPlusCircle } from "react-icons/hi";
 import { useSelector } from "react-redux"
-import { getStorageAuth } from "../../util/storage";
 import TicketForm from "../Form/TicketForm";
 import { getUsersByEquipe } from "../../services/equipe/get-users-by-equipe";
 
@@ -14,9 +13,11 @@ const CriarTicketButton: React.FC = () => {
     const [integrantes, setIntegrantes] = useState([]);
 
     useEffect(() => {
-        getUsersByEquipe(currentEquipe).then((response) => {
-            setIntegrantes(response);
-        })
+        if (currentEquipe){
+            getUsersByEquipe(currentEquipe).then((response) => {
+                setIntegrantes(response);
+            })
+        }
     }, [currentEquipe])
 
     const showModal = () => {

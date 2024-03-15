@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "corsheaders",
     'ninja_extra',
+    "corsheaders",
     'ninja_jwt',
     'calls',
 ]

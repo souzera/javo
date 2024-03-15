@@ -13,7 +13,6 @@ const LoginPage: React.FC = () => {
 
     const [illustration] = useState(randomImage())
 
-
     return (
         <body>
             <div className="flex justify-center items-center h-screen w-screen bg-zinc-900 overflow-hidden">
