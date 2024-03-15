@@ -1,4 +1,5 @@
 import { Button, Form, Input, Select, SelectProps } from "antd";
+import { IoTicket } from 'react-icons/io5'
 import { prioridadeMapper } from "../../services/prioridade/get-prioridade";
 import { Call } from "../../types/call";
 import { JAVO_API_URL } from "../../util/constants";
@@ -23,7 +24,7 @@ function TicketForm(props: TicketFormProps) {
   const prioridadeOptions: SelectProps["options"] = [];
   const integrantesOptions: SelectProps["options"] = [];
 
-  const { currentUser } = getStorageAuth()
+  const { currentUser } = getStorageAuth();
 
   prioridadeMapper.forEach((prioridade) => {
     prioridadeOptions.push({
@@ -83,9 +84,16 @@ function TicketForm(props: TicketFormProps) {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">Criar Ticket</h1>
+      <div className="flex justify-start items-center gap-2">
+        <IoTicket className="text-2xl" />
+        <h1 className="text-2xl font-bold">Criar Ticket</h1>
+      </div>
       <hr className="my-2" />
-      <Form preserve={false} onFinishFailed={onFinishFailed} onFinish={onFinish}>
+      <Form
+        preserve={false}
+        onFinishFailed={onFinishFailed}
+        onFinish={onFinish}
+      >
         <Form.Item
           name="titulo"
           rules={[
@@ -140,7 +148,7 @@ function TicketForm(props: TicketFormProps) {
             className="border-2 border-black font-bold rounded-full hover:scale-110"
             htmlType="submit"
           >
-            Enviar
+            Criar
           </Button>
         </Form.Item>
       </Form>
