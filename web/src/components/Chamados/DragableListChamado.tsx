@@ -5,6 +5,7 @@ import { Call} from "../../types/call"
 import ChamadoContainer from "./ChamadoContainer"
 import { useSelector } from "react-redux"
 import { getCallsByEquipe } from "../../services/call/get-calls"
+import { Flex } from "antd"
 
 export function DragableListChamado() {
 
@@ -22,13 +23,15 @@ export function DragableListChamado() {
 
     return (
         <>
-            <div className="grid grid-cols-3 gap-4 auto-cols-auto">
+            <Flex
+                wrap="wrap" gap='small'
+            >
                 {chamados.map((chamado) => {
                     return (
                         <ChamadoContainer chamado={chamado} />
                     )
                 })}
-            </div>
+            </Flex>
         </>
     )
 }

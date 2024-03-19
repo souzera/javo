@@ -63,7 +63,7 @@ const DashboardPage: React.FC = () => {
             <Provider store={store}>
                 <body className="flex flex-col overflow-hidden">
                     <section className="flex min-h-[90vh] overflow-hidden">
-                        <aside className="w-[30%] bg-zinc-950">
+                        <aside className="w-[30%] bg-zinc-950 overflow-y-auto">
                             <div className="container flex flex-col  h-full p-8 overflow-y-auto">
                                 <div className="mb-4 p-8">
                                     <LogoLetter />
@@ -72,13 +72,17 @@ const DashboardPage: React.FC = () => {
                                     <CriarEquipeButton />
                                     <div>
                                         {currentEquipes?.map((equipe) => {
-                                            return <EquipeSelectButton key={null} id={equipe.id_equipe} nome={equipe.nome} />
+                                            let icon_equipe = undefined
+                                            if (equipe.icon_url != ""){
+                                                icon_equipe = equipe.icon_url
+                                            }
+                                            return <EquipeSelectButton key={null} id={equipe.id_equipe} nome={equipe.nome} avatar={icon_equipe} />
                                         })}
                                     </div>
                                 </div>
                             </div>
                         </aside>
-                        <main className="w-[70%] bg-zinc-900">
+                        <main className="w-[70%] bg-zinc-900 h-auto overflow-auto">
                             <div className="flex justify-end items-center p-4 gap-4 -z-40 bg-transparent">
                                 <div className="w-full p-2">
                                     <div className="flex">
@@ -101,7 +105,7 @@ const DashboardPage: React.FC = () => {
                                 </div>
                                 <Avatar size="large" src={currentUser.url_avatar} />
                             </div>
-                            <div className="h-full p-8 overflow-auto">
+                            <div className="h-full p-8">
                                 <DragableListChamado />
                             </div>
                         </main>

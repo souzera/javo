@@ -13,7 +13,7 @@ interface ChamadoContainerProps {
 export default function ChamadoContainer({ chamado }: ChamadoContainerProps) {
 
     let stylePrioridade = "px-4 rounded-2xl text-white font-bold stroke-[13vw] stroke-white"
-    let styleContainer = "flex flex-col flex-1 cursor-pointer text-white text-ellipsis p-4 gap-2 rounded-2xl transition ease-in-out duration-1000 hover:scale-105 overflow-hidden border-2 w-auto h-auto bg-zinc-900"
+    let styleContainer = "flex flex-col w-[28%] h-auto cursor-pointer text-white text-ellipsis p-4 gap-2 rounded-2xl transition ease-in-out duration-1000 hover:scale-105 overflow-hidden border-2 bg-zinc-900"
 
     let styleStatus = "h-4 w-4 rounded-full"
 
