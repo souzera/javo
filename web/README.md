@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Documentação - Projeto JaVo
 
-## Getting Started
+## Guia de Instalação - Ambiente WEB
 
-First, run the development server:
+Este guia fornecerá instruções passo a passo sobre como configurar o ambiente de desenvolvimento da aplicação.
+
+### Pré-requisitos
+Antes de começar, verifique se o seu sistema atende aos seguintes requisitos:
+
+- Node.js e npm instalados (versão LTS recomendada)
+- Um editor de código, como Visual Studio Code, Sublime Text, ou similar
+- Repositório clonado em sua máquina
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/souzera/javo.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Acesse o diretório WEB
+Para acessar o diretório recém-clonado do projeto:
+```bash
+cd javo/web
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Instale as dependências
+Para instalar as dependências do projeto utilizando o npm:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm install
+```
 
-## Learn More
+### Executar a aplicação
+Execute a aplicação com o comando:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Isso iniciará o servidor de desenvolvimento e abrirá o aplicativo JaVo no seu navegador padrão. Você também pode acessá-lo manualmente em http://localhost:3000.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
